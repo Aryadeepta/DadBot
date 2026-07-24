@@ -1,8 +1,10 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/src/index.html" },
+    { "source": "/api/chat", "destination": "/api/chat" },
     { "source": "/style.css", "destination": "/src/style.css" },
     { "source": "/app.js", "destination": "/src/app.js" },
-    { "source": "/assets/(.*)", "destination": "/src/assets/" }
+    { "source": "/assets/(.*)", "destination": "/src/assets/$1" },
+    { "source": "/(.*)", "destination": "/src/index.html" }
   ]
 }
+
