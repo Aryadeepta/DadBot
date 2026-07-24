@@ -3,11 +3,6 @@
     { "source": "/", "destination": "/src/index.html" },
     { "source": "/style.css", "destination": "/src/style.css" },
     { "source": "/app.js", "destination": "/src/app.js" },
-    { "source": "/assets/(.*)", "destination": "/src/assets/$1" }
-  ],
-  "functions": {
-    "api/chat.js": {
-      "runtime": "@vercel/node"
-    }
-  }
+    { "source": "/assets/(.*)", "destination": "/src/assets/" }
+  ]
 }
