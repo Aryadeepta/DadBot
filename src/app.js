@@ -13,7 +13,7 @@ const personalityPrompt = `You are ${FATHER_NAME}. Your personality is ${PERSONA
 
 async function getChatResponse(message) {
     // Call the serverless backend function instead of the direct API
-    const response = await fetch('/api/chat', {
+    const response = await fetch('/api/chatv2', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
