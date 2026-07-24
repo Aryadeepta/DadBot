@@ -44,8 +44,11 @@ function updateAvatar(text) {
 }
 
 
-sendBtn.addEventListener('click', async () => {
+// Function to handle sending the message
+async function sendMessage() {
     const message = userInput.value;
+    if (!message) return; // Prevent empty messages
+    
     chatBox.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
     userInput.value = '';
 
@@ -53,5 +56,15 @@ sendBtn.addEventListener('click', async () => {
     chatBox.innerHTML += `<p><strong>Babai:</strong> ${response}</p>`;
     speak(response);
     updateAvatar(response);
+}
+
+// Click event
+sendBtn.addEventListener('click', sendMessage);
+
+// Enter key event
+userInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
 });
 
