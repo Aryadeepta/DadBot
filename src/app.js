@@ -31,13 +31,18 @@ function speak(text) {
 }
 
 function updateAvatar(text) {
+    if (!text) {
+        avatar.src = '/assets/neutral.jpg';
+        return;
+    }
     // Simple sentiment-based heuristic
     if (text.includes('happy') || text.includes('good') || text.includes('!') ) {
-        avatar.src = 'assets/happy.jpg';
+        avatar.src = '/assets/happy.jpg';
     } else {
-        avatar.src = 'assets/neutral.jpg';
+        avatar.src = '/assets/neutral.jpg';
     }
 }
+
 
 sendBtn.addEventListener('click', async () => {
     const message = userInput.value;

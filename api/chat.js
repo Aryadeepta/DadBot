@@ -7,6 +7,9 @@ export default async function handler(req, res) {
   const { message } = req.body;
   const API_KEY = process.env.GEMINI_API_KEY;
 
+  console.log('Request body:', req.body);
+  console.log('API Key present:', !!API_KEY);
+
   if (!API_KEY) {
     return res.status(500).json({ error: 'API Key not configured' });
   }
@@ -19,10 +22,17 @@ export default async function handler(req, res) {
     });
 
     const data = await response.json();
-    const botResponse = data.candidates[0].content.parts[0].text;
+    console.log('Gemini API response:', JSON.stringify(data));
+    
+    const botResponse = data.candidates?.[0]?.content?.parts?.[0]?.text;
+    
+    if (!botResponse) {
+        return res.status(500).json({ error: 'Unexpected response from Gemini', details: data });
+    }
     
     return res.status(200).json({ response: botResponse });
   } catch (error) {
-    return res.status(500).json({ error: 'Failed to fetch from Gemini' });
+    console.error('Fetch error:', error);
+    return res.status(500).json({ error: 'Failed to fetch from Gemini', message: error.message });
   }
 }
