@@ -4,5 +4,10 @@
     { "source": "/style.css", "destination": "/src/style.css" },
     { "source": "/app.js", "destination": "/src/app.js" },
     { "source": "/assets/(.*)", "destination": "/src/assets/$1" }
-  ]
+  ],
+  "functions": {
+    "api/chat.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
 }
